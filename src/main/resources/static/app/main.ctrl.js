@@ -1,13 +1,13 @@
 angular.module('myApp')
     .controller('AppCtrl', function ($scope, $rootScope, $timeout, $mdSidenav, $log, authService, apiService, $filter, logger) {
         $rootScope.currentUser = {};
-        var isAuthTokenPresent = authService.testUserAuthenticated();
-
-        if (isAuthTokenPresent) {
-            apiService.getMyAccount().then(function (data) {
-                $rootScope.currentUser = data;
-            })
-        }
+        // var isAuthTokenPresent = authService.testUserAuthenticated();
+        //
+        // if (isAuthTokenPresent) {
+        //     apiService.getMyAccount().then(function (data) {
+        //         $rootScope.currentUser = data;
+        //     })
+        // }
 
         $rootScope.printDate = function (date) {
             if (isUndefinedOrNull(date)) return null;

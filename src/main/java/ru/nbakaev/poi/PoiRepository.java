@@ -68,6 +68,8 @@ public class PoiRepository {
 
     public List<PoiDto> getPoiInRadius(PoiDto.PoiLocation location, double radius ){
         NearQuery nearQuery = NearQuery.near(location.getLatitude(), location.getLongitude());
+
+        radius = radius * 0.001; // from metres to KILOMETERS
         nearQuery.maxDistance(new Distance(radius, Metrics.KILOMETERS));
 
         GeoResults<DbPoi> geoResults = mongoTemplate.geoNear(nearQuery, DbPoi.class);
