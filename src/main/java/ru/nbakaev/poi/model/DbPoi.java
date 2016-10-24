@@ -14,6 +14,7 @@ public class DbPoi {
     private byte[] image;
     private String name;
     private String description;
+    private String imageUrl;
 
     @Id
     private String id;
@@ -26,12 +27,21 @@ public class DbPoi {
     }
 
 
-    public DbPoi(byte[] image, String name, String description, String id, double[] point) {
+    public DbPoi(byte[] image, String name, String description, String id, double[] point, String imageUrl) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.id = id;
         this.point = point;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setPoint(double[] point) {

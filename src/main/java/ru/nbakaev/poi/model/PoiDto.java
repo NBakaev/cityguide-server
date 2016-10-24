@@ -9,6 +9,7 @@ public class PoiDto {
     private byte[] image;
     private String name;
     private String description;
+    private String imageUrl;
 
     private PoiLocation location = new PoiLocation();
     private String id;
@@ -16,12 +17,21 @@ public class PoiDto {
     public PoiDto() {
     }
 
-    public PoiDto(byte[] image, String name, String description, PoiLocation location, String id) {
+    public PoiDto(byte[] image, String name, String description, PoiLocation location, String id, String imageUrl) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.location = location;
         this.id = id;
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {

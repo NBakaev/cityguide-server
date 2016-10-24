@@ -1,7 +1,7 @@
 <md-content >
 <div  >
 
-    find POIs if radius
+    find POIs in radius
 
     <md-input-container class="md-block" flex-gt-sm>
         <label>latitude</label>
@@ -39,6 +39,10 @@
                 description
             </th>
 
+            <th>
+                image
+            </th>
+
             <th class="col-md-1">
                 latitude
             </th>
@@ -65,6 +69,13 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>
                         <input type="text" ng-model="poi.description">
+                    </md-input-container>
+                </td>
+
+                <td>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label></label>
+                        <input type="text" ng-model="poi.imageUrl">
                     </md-input-container>
                 </td>
 
