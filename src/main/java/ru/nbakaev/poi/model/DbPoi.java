@@ -5,16 +5,21 @@ import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Nikita on 10/14/2016.
  */
 @Document
 public class DbPoi {
 
-    private byte[] image;
     private String name;
     private String description;
     private String imageUrl;
+
+    private List<String> imageUrls = new ArrayList<>();
+    private String videoUrl;
 
     @Id
     private String id;
@@ -27,13 +32,14 @@ public class DbPoi {
     }
 
 
-    public DbPoi(byte[] image, String name, String description, String id, double[] point, String imageUrl) {
-        this.image = image;
+    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl) {
         this.name = name;
         this.description = description;
         this.id = id;
         this.point = point;
         this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
+        this.imageUrls = imageUrls;
     }
 
     public String getImageUrl() {
@@ -52,13 +58,6 @@ public class DbPoi {
         return point;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
 
     public String getName() {
         return name;
@@ -84,4 +83,19 @@ public class DbPoi {
         this.id = id;
     }
 
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
 }

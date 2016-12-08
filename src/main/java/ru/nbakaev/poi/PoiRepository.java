@@ -30,7 +30,8 @@ public class PoiRepository {
     }
 
     private PoiDto transform(DbPoi dbPoi){
-        return new PoiDto(dbPoi.getImage(), dbPoi.getName(), dbPoi.getDescription(), new PoiDto.PoiLocation(dbPoi.getPoint()[0], dbPoi.getPoint()[1]), dbPoi.getId(), dbPoi.getImageUrl());
+        return new PoiDto(dbPoi.getName(), dbPoi.getDescription(), new PoiDto.PoiLocation(dbPoi.getPoint()[0], dbPoi.getPoint()[1]), dbPoi.getId(), dbPoi.getImageUrl(),
+                dbPoi.getImageUrls(), dbPoi.getVideoUrl());
     }
 
     private List<PoiDto> transform(List<DbPoi> dbPois){
@@ -38,7 +39,8 @@ public class PoiRepository {
     }
 
     private DbPoi transformDB(PoiDto poiDto){
-        return new DbPoi(poiDto.getImage(), poiDto.getName(), poiDto.getDescription(), poiDto.getId(), new double[]{poiDto.getLocation().getLatitude(), poiDto.getLocation().getLongitude()}, poiDto.getImageUrl());
+        return new DbPoi(poiDto.getName(), poiDto.getDescription(), poiDto.getId(), new double[]{poiDto.getLocation().getLatitude(), poiDto.getLocation().getLongitude()}, poiDto.getImageUrl(),
+                poiDto.getImageUrls(), poiDto.getVideoUrl());
     }
 
     private List<DbPoi> transformDB(List<PoiDto> dbPoiDtos){

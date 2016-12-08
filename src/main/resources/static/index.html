@@ -34,83 +34,83 @@
             </div>
         <div layout="column" layout-fill layout-align="top left">
 
-            <div ng-controller="HeaderController">
+            <!--<div ng-controller="HeaderController">-->
 
-                <div class="pull-right" style="position: absolute; right: 80px !important; top: 0px;">
-                    <div ng-if="!currentUser.username">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <md-button ng-click="registrateNewUser($event)">Зарегистрироваться
-                            </div>
-                            <div class="col-md-6">
-                                <md-button ng-click="logIn($event)" class="pull-right">Вход</md-button>
-                            </div>
-                        </div>
-                    </div>
+                <!--<div class="pull-right" style="position: absolute; right: 80px !important; top: 0px;">-->
+                    <!--<div ng-if="!currentUser.username">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6">-->
+                                <!--<md-button ng-click="registrateNewUser($event)">Зарегистрироваться-->
+                            <!--</div>-->
+                            <!--<div class="col-md-6">-->
+                                <!--<md-button ng-click="logIn($event)" class="pull-right">Вход</md-button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div ng-if="currentUser.username">
-                        <div class="row">
-                            <div class="col-md-6">
+                    <!--<div ng-if="currentUser.username">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6">-->
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <md-menu>
-                                            <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)"
-                                                       style="width: 90px;">
-                                                <span><b>{{currentUser.customer.firstname || currentUser.username}}</b></span>
-                                            </md-button>
-                                            <md-menu-content width="4">
-                                                <md-menu-item>
-                                                    <md-button href="/#/purchase/my">
-                                                        Мои заказы
-                                                    </md-button>
-                                                </md-menu-item>
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<md-menu>-->
+                                            <!--<md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)"-->
+                                                       <!--style="width: 90px;">-->
+                                                <!--<span><b>{{currentUser.customer.firstname || currentUser.username}}</b></span>-->
+                                            <!--</md-button>-->
+                                            <!--<md-menu-content width="4">-->
+                                                <!--<md-menu-item>-->
+                                                    <!--<md-button href="/#/purchase/my">-->
+                                                        <!--Мои заказы-->
+                                                    <!--</md-button>-->
+                                                <!--</md-menu-item>-->
 
-                                                <md-menu-item>
-                                                    <md-button href="/#/account/my">
-                                                        Мой профиль
-                                                    </md-button>
-                                                </md-menu-item>
-                                            </md-menu-content>
-                                        </md-menu>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <md-menu ng-if="hasRole('ROLE_ADMIN')">
-                                            <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)"
-                                                       style="width: 90px;">
-                                                <span><b>Админ</b></span>
-                                            </md-button>
-                                            <md-menu-content width="4">
-                                                <md-menu-item>
-                                                    <md-button href="/#/account/all">
-                                                        Все пользователи
-                                                    </md-button>
-                                                </md-menu-item>
+                                                <!--<md-menu-item>-->
+                                                    <!--<md-button href="/#/account/my">-->
+                                                        <!--Мой профиль-->
+                                                    <!--</md-button>-->
+                                                <!--</md-menu-item>-->
+                                            <!--</md-menu-content>-->
+                                        <!--</md-menu>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<md-menu ng-if="hasRole('ROLE_ADMIN')">-->
+                                            <!--<md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)"-->
+                                                       <!--style="width: 90px;">-->
+                                                <!--<span><b>Админ</b></span>-->
+                                            <!--</md-button>-->
+                                            <!--<md-menu-content width="4">-->
+                                                <!--<md-menu-item>-->
+                                                    <!--<md-button href="/#/account/all">-->
+                                                        <!--Все пользователи-->
+                                                    <!--</md-button>-->
+                                                <!--</md-menu-item>-->
 
-                                                <md-menu-item>
-                                                    <md-button href="/#/purchase/all">
-                                                        Все заказа
-                                                    </md-button>
-                                                </md-menu-item>
+                                                <!--<md-menu-item>-->
+                                                    <!--<md-button href="/#/purchase/all">-->
+                                                        <!--Все заказа-->
+                                                    <!--</md-button>-->
+                                                <!--</md-menu-item>-->
 
-                                                <md-menu-item>
-                                                    <md-button href="/#/category/all">
-                                                        Категории
-                                                    </md-button>
-                                                </md-menu-item>
+                                                <!--<md-menu-item>-->
+                                                    <!--<md-button href="/#/category/all">-->
+                                                        <!--Категории-->
+                                                    <!--</md-button>-->
+                                                <!--</md-menu-item>-->
 
-                                            </md-menu-content>
-                                        </md-menu>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <md-button ng-click="logOut($event)" class="pull-right">Выход</md-button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                            <!--</md-menu-content>-->
+                                        <!--</md-menu>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-6">-->
+                                <!--<md-button ng-click="logOut($event)" class="pull-right">Выход</md-button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div ng-view></div>
         </div>

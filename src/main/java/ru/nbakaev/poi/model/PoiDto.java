@@ -1,15 +1,19 @@
 package ru.nbakaev.poi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Nikita on 10/14/2016.
  */
 
 public class PoiDto {
 
-    private byte[] image;
     private String name;
     private String description;
     private String imageUrl;
+    private List<String> imageUrls = new ArrayList<>();
+    private String videoUrl;
 
     private PoiLocation location = new PoiLocation();
     private String id;
@@ -17,13 +21,14 @@ public class PoiDto {
     public PoiDto() {
     }
 
-    public PoiDto(byte[] image, String name, String description, PoiLocation location, String id, String imageUrl) {
-        this.image = image;
+    public PoiDto(String name, String description, PoiLocation location, String id, String imageUrl, List<String> imageUrls,String videoUrl) {
         this.name = name;
         this.description = description;
         this.location = location;
         this.id = id;
         this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
+        this.imageUrls = imageUrls;
     }
 
     public String getImageUrl() {
@@ -50,14 +55,6 @@ public class PoiDto {
         this.location = location;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
 
     public String getName() {
         return name;
@@ -75,6 +72,21 @@ public class PoiDto {
         this.description = description;
     }
 
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
 
     static public class PoiLocation {
 

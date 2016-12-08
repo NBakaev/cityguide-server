@@ -38,6 +38,11 @@ private final PoiRepository poiRepository;
         return poiRepository.getPoiInRadius(poiLocation, Double.parseDouble(radius));
     }
 
+    @RequestMapping(value = "id/{id}",method = RequestMethod.GET)
+    public PoiDto getPoiById(@PathVariable("id") String id){
+        return poiRepository.getPoiById(id);
+    }
+
     @RequestMapping(value = "",method = RequestMethod.PUT)
     public PoiDto update(@RequestBody PoiDto poiDto){
         return poiRepository.updatePoi(poiDto);
