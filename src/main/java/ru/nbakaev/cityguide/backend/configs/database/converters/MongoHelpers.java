@@ -1,4 +1,4 @@
-package ru.nbakaev.configs.database.converters;
+package ru.nbakaev.cityguide.backend.configs.database.converters;
 
 import org.springframework.data.mapping.context.MappingContext;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-import ru.nbakaev.configs.database.converters.converters.BigDecimalToDoubleConverter;
-import ru.nbakaev.configs.database.converters.converters.DoubleToBigDecimalConverter;
+import ru.nbakaev.cityguide.backend.configs.database.converters.converters.BigDecimalToDoubleConverter;
+import ru.nbakaev.cityguide.backend.configs.database.converters.converters.DoubleToBigDecimalConverter;
 
 import java.util.Arrays;
 

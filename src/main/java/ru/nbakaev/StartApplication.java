@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("ru.nbakaev")
 @Configuration
 @EnableAutoConfiguration(exclude = {MongoDataAutoConfiguration.class, MongoAutoConfiguration.class, EmbeddedMongoAutoConfiguration.class})
-public class CityguideApplication {
+public class StartApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CityguideApplication.class, args);
+		SpringApplication.run(StartApplication.class, args);
 	}
 }

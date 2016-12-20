@@ -24,6 +24,30 @@
 </head>
 <body>
 
+<section layout="row" flex>
+<md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="true"
+        md-whiteframe="4">
+
+    <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content >
+
+        <ul>
+            <li>
+                <a href="#/city">Cities</a>
+            </li>
+            <li>
+                <a href="#/main_page">POIs</a>
+            </li>
+        </ul>
+    </md-content>
+
+</md-sidenav>
+
 <div ng-controller="AppCtrl"></div>
 
 <section layout="row" flex>
@@ -33,6 +57,8 @@
             <md-button href="#/" style="padding: 0px; margin-top: -10px;">Главная страница</md-button>
             </div>
         <div layout="column" layout-fill layout-align="top left">
+
+
 
             <!--<div ng-controller="HeaderController">-->
 
@@ -123,6 +149,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
+</section>
 <script src="assets/upload/angular-file-upload-shim.min.js"></script>
 
 <script src="app/common.js"></script>
@@ -134,6 +161,7 @@
 <script src="bower_components/toastr/toastr.min.js"></script>
 <script src="app/app.js"></script>
 <script src="app/main_page/main_page.js"></script>
+<script src="app/city/main_page.js"></script>
 <script src="app/service.js"></script>
 <script src="app/service.api.js"></script>
 <script src="app/main.ctrl.js"></script>

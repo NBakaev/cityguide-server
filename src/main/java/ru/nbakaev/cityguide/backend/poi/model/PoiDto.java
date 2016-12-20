@@ -1,6 +1,9 @@
-package ru.nbakaev.poi.model;
+package ru.nbakaev.cityguide.backend.poi.model;
+
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,10 +21,14 @@ public class PoiDto {
     private PoiLocation location = new PoiLocation();
     private String id;
 
+    @ApiModelProperty("Id of city. Can be null")
+    private String cityId;
+    private Date lastUpdate;
+
     public PoiDto() {
     }
 
-    public PoiDto(String name, String description, PoiLocation location, String id, String imageUrl, List<String> imageUrls,String videoUrl) {
+    public PoiDto(String name, String description, PoiLocation location, String id, String imageUrl, List<String> imageUrls, String videoUrl, String cityId, Date lastUpdate) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -29,6 +36,25 @@ public class PoiDto {
         this.imageUrl = imageUrl;
         this.videoUrl = videoUrl;
         this.imageUrls = imageUrls;
+        this.cityId = cityId;
+        this.lastUpdate = lastUpdate;
+    }
+
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public String getImageUrl() {

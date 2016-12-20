@@ -1,4 +1,4 @@
-package ru.nbakaev.configs;
+package ru.nbakaev.cityguide.backend.configs;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;

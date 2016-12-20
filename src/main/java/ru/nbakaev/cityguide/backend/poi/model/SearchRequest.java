@@ -1,4 +1,4 @@
-package ru.nbakaev.poi.model;
+package ru.nbakaev.cityguide.backend.poi.model;
 
 /**
  * Created by Nikita on 10/14/2016.

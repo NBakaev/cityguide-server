@@ -1,26 +1,6 @@
 <md-content >
 <div  >
 
-    find POIs in radius
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>latitude</label>
-        <input type="text" ng-model="searchRequest.latitude">
-    </md-input-container>
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>longitude</label>
-        <input type="text" ng-model="searchRequest.longitude">
-    </md-input-container>
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>radius in metres</label>
-        <input type="text" ng-model="searchRequest.radius">
-    </md-input-container>
-
-    <md-button ng-click="searchPOIsInRadius(poi)" md-no-ink class="md-primary">search</md-button>
-
-
     <table class="table table-condensed table-stripped table-hover">
         <thead>
         <tr>
@@ -40,7 +20,7 @@
             </th>
 
             <th>
-                city
+                POIs number
             </th>
 
             <th>
@@ -58,6 +38,11 @@
             <th class="col-md-1">
                 longitude
             </th>
+
+            <th class="col-md-1">
+                approximateRadius
+            </th>
+
             <th></th>
         </tr>
         </thead>
@@ -65,7 +50,10 @@
         <tbody>
             <tr data-ng-repeat="poi in allPOIs">
                 <td>{{$index + 1}}</td>
-                <td>{{poi.id}}</td>
+                <td>{{poi.id}}
+                    <br>
+                    {{poi.lastUpdate | date: 'medium'}}
+                </td>
                 <td>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>
@@ -83,7 +71,7 @@
                 <td>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>
-                        <input type="text" ng-model="poi.cityId">
+                        <input type="text" ng-model="poi.pois" disabled>
                     </md-input-container>
                 </td>
 
@@ -114,6 +102,15 @@
                         <input type="number" ng-model="poi.location.longitude">
                     </md-input-container>
                 </td>
+
+                <td>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label></label>
+                        <input type="number" ng-model="poi.approximateRadius">
+                    </md-input-container>
+                </td>
+
+
                 <td>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>

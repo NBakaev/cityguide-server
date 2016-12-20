@@ -1,4 +1,4 @@
-package ru.nbakaev.configs;
+package ru.nbakaev.cityguide.backend.configs;
 
 /**
  * Created by Nikita Bakaev, ya@nbakaev.ru on 1/11/2016.

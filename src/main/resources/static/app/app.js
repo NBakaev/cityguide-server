@@ -4,6 +4,7 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.view1',
+    'myApp.city',
     'myApp.services',
     'myApp.api',
     'myApp.good',

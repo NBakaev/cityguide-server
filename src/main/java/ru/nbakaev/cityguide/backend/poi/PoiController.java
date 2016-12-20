@@ -1,9 +1,9 @@
-package ru.nbakaev.poi;
+package ru.nbakaev.cityguide.backend.poi;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.nbakaev.poi.model.PoiDto;
-import ru.nbakaev.poi.model.SearchRequest;
+import ru.nbakaev.cityguide.backend.poi.model.PoiDto;
+import ru.nbakaev.cityguide.backend.poi.model.SearchRequest;
 
 import java.util.List;
 
@@ -38,6 +38,11 @@ private final PoiRepository poiRepository;
         return poiRepository.getPoiInRadius(poiLocation, Double.parseDouble(radius));
     }
 
+    @RequestMapping(value = "city/id/{id}",method = RequestMethod.GET)
+    public List<PoiDto> getPoiInCityId(@PathVariable("id") String id){
+        return poiRepository.getPoiInCity(id);
+    }
+
     @RequestMapping(value = "id/{id}",method = RequestMethod.GET)
     public PoiDto getPoiById(@PathVariable("id") String id){
         return poiRepository.getPoiById(id);
@@ -55,7 +60,7 @@ private final PoiRepository poiRepository;
 
     @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") String id){
-        poiRepository.deltePoiById(id);
+        poiRepository.deletePoiById(id);
     }
 
     @RequestMapping(value = "search",method = RequestMethod.POST)

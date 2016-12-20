@@ -1,4 +1,4 @@
-package ru.nbakaev.configs;
+package ru.nbakaev.cityguide.backend.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +10,11 @@ import org.springframework.core.annotation.Order;
 
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@Profile("development")
-@PropertySource("classpath:application-development.properties")
-public class DevelopmentProfile {
+@Profile("production")
+@PropertySource("classpath:application-production.properties")
+public class ProductionProfile {
 
-    @Bean
+    @Bean(name = "propertySourcesPlaceholderConfigurer")
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }

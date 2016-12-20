@@ -22,6 +22,24 @@ angular.module('myApp.api', ['ngRoute', 'myApp.services'])
             return serverRequestService.post('poi/search', obj);
         };
 
+        ///////////////////////////////////////////////////////////////
+
+        // category
+        this.getAllCities = function () {
+            return serverRequestService.get('city');
+        };
+
+        this.addCity = function (obj) {
+            return serverRequestService.post('city', obj);
+        };
+
+        this.updateCity = function (obj) {
+            return serverRequestService.put('city', obj);
+        };
+
+        this.deleteCity = function (obj) {
+            return serverRequestService.delete('city/' + obj);
+        };
 
     }])
     

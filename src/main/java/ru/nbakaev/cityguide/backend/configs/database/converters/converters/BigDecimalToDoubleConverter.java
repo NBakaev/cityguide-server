@@ -1,4 +1,4 @@
-package ru.nbakaev.configs.database.converters.converters;
+package ru.nbakaev.cityguide.backend.configs.database.converters.converters;
 
 import org.springframework.core.convert.converter.Converter;
 

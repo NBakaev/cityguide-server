@@ -43,8 +43,6 @@ angular.module('myApp.view1', ['ngRoute'])
 
             $scope.deletePoi = function (poi, index) {
                 apiService.deletePoi(poi.id).then(function (data) {
-                    // $scope.allPOIs = data;
-                    $scope.allPOIs.push(data);
                     $scope.allPOIs.splice(index, 1);
                 });
             }

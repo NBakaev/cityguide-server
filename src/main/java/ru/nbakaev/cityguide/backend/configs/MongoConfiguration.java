@@ -1,4 +1,4 @@
-package ru.nbakaev.configs;
+package ru.nbakaev.cityguide.backend.configs;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -10,7 +10,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import ru.nbakaev.configs.database.converters.MongoHelpers;
+import ru.nbakaev.cityguide.backend.configs.database.converters.MongoHelpers;
 
 import java.io.IOException;
 
