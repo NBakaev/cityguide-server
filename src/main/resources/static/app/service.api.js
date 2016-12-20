@@ -6,6 +6,10 @@ angular.module('myApp.api', ['ngRoute', 'myApp.services'])
             return serverRequestService.get('poi');
         };
 
+        this.getPoiById = function (id) {
+            return serverRequestService.get('poi/id/'+id);
+        };
+
         this.addPoi = function (obj) {
             return serverRequestService.post('poi', obj);
         };

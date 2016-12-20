@@ -16,8 +16,18 @@ angular.module('myApp', [
     'angular-loading-bar',
     'angularFileUpload'
 
-]).config(['$routeProvider', 'paginationTemplateProvider', '$httpProvider', function ($routeProvider, paginationTemplateProvider, $httpProvider) {
+]).config(['$routeProvider', 'paginationTemplateProvider', '$httpProvider', '$sceDelegateProvider',
+    function ($routeProvider, paginationTemplateProvider, $httpProvider, $sceDelegateProvider) {
     $routeProvider.otherwise({redirectTo: '/main_page'});
     paginationTemplateProvider.setPath('bower_components/angularUtils-pagination/dirPagination.tpl.html');
     $httpProvider.interceptors.push('authHttpResponseInterceptor');
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'https://www.youtube.com/**',
+            'http://www.youtube.com/**',
+            'http://youtube.com/**',
+            'http://m.youtube.com/**',
+            'https://m.youtube.com/**',
+        ]);
 }]);

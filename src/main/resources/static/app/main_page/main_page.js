@@ -6,9 +6,42 @@ angular.module('myApp.view1', ['ngRoute'])
         $routeProvider.when('/main_page', {
             templateUrl: 'app/main_page/index.html',
             controller: 'mainPageController'
-        });
+        })
+            .when('/poi/:id', {
+                templateUrl: 'app/main_page/details.html',
+                controller: 'PoiDetailsController'
+            });
     }])
-    
+
+    .controller('PoiDetailsController', ['$scope', '$rootScope', 'apiService', '$mdDialog', '$mdMedia', 'authService', '$route', '$sce',
+        function ($scope, $rootScope, apiService, $mdDialog, $mdMedia, authService, $route, $sce) {
+
+            $scope.poi = {};
+
+            $scope.trustSrc = function(src) {
+                return $sce.trustAsResourceUrl(src);
+            }
+
+
+            apiService.getPoiById($route.current.params.id).then(function (data) {
+                $scope.poi = data;
+            })
+
+            $scope.getMapUrl = function () {
+                if (!$scope.poi.id){
+                    return "";
+                }
+                return $scope.trustSrc('https://maps.google.com/maps/api/staticmap?center='+$scope.poi.location.latitude+','+$scope.poi.location.longitude+'&zoom=15&size=400x200&sensor=false&markers='+$scope.poi.location.latitude+','+$scope.poi.location.longitude+'&key=AIzaSyBiL8IeEDG_k2dOp3tLCIwgR1_uY-p4osA');
+            }
+
+            $scope.getVideoUrl =function() {
+                if (!$scope.poi.id  || !$scope.poi.videoUrl){
+                    return "";
+                }
+                return $scope.poi.videoUrl.replace("/watch?v=", "/embed/");
+            }
+
+        }])
     .controller('mainPageController', ['$scope', '$rootScope', 'apiService', '$mdDialog', '$mdMedia', 'authService', 'cartService', 'logger',
         function ($scope, $rootScope, apiService, $mdDialog, $mdMedia, authService, cartService, logger) {
 

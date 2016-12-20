@@ -65,7 +65,11 @@
         <tbody>
             <tr data-ng-repeat="poi in allPOIs">
                 <td>{{$index + 1}}</td>
-                <td>{{poi.id}}</td>
+                <td>
+                    <a href="#/poi/{{poi.id}}">
+                        {{poi.id}}
+                    </a>
+                    </td>
                 <td>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>
