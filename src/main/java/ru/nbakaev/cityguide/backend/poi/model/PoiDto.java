@@ -143,6 +143,7 @@ public class PoiDto {
             this.longitude = longitude;
         }
 
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -151,8 +152,9 @@ public class PoiDto {
             PoiLocation that = (PoiLocation) o;
 
             if (Double.compare(that.latitude, latitude) != 0) return false;
-            return Double.compare(that.longitude, longitude) == 0;
+            if (Double.compare(that.longitude, longitude) != 0) return false;
 
+            return true;
         }
 
         @Override

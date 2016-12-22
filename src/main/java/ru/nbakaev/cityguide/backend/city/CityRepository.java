@@ -68,9 +68,16 @@ public class CityRepository {
     public City addCity(City poiDto) {
         poiDto.setPois(countPoisInCity(poiDto));
         poiDto.setLastUpdate(new Date());
+
+        if (poiDto.getApproximateRadius() < 1){
+            poiDto.setApproximateRadius(100);
+        }
+
         mongoTemplate.insert(poiDto);
         recoundAndSaveAllCitiesPoisNumbers();
-        return poiDto;
+
+        // to get pois number
+        return getCityById(poiDto.getId());
     }
 
     public City updateCity(City poiDto) {
@@ -82,16 +89,24 @@ public class CityRepository {
     }
 
     public void deleteCityById(String id) {
-        City poi = new City();
-        poi.setId(id);
+        City city = new City();
+        city.setId(id);
 
-        List<PoiDto> poisInCity = getPoisInCity(poi);
-        for (PoiDto poiDto : poisInCity) {
-            poiDto.setCityId(null);
-            poiRepository.updatePoi(poiDto);
+        List<PoiDto> poisInCity = getPoisInCity(city);
+
+        List<PoiDto> poisInCityCache = poiRepository.getPoiInCity(id);
+        for (PoiDto dto : poisInCityCache) {
+            if (!poisInCity.contains(dto)){
+                poisInCity.add(dto);
+            }
         }
 
-        mongoTemplate.remove(poi);
+        for (PoiDto poiDto : poisInCity) {
+            poiDto.setCityId(null);
+            poiRepository.updatePoi(poiDto, false);
+        }
+
+        mongoTemplate.remove(city);
         recoundAndSaveAllCitiesPoisNumbers();
     }
 
