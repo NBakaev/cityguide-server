@@ -18,10 +18,17 @@ angular.module('myApp.view1', ['ngRoute'])
 
             $scope.poi = {};
 
+            $scope.data = {};
+            $scope.data.pageUrl = window.location.href;
+
             $scope.trustSrc = function(src) {
                 return $sce.trustAsResourceUrl(src);
-            }
+            };
 
+            $scope.updatePoi = function (poi) {
+                apiService.updatePoi(poi).then(function (data) {
+                });
+            };
 
             apiService.getPoiById($route.current.params.id).then(function (data) {
                 $scope.poi = data;
@@ -53,6 +60,13 @@ angular.module('myApp.view1', ['ngRoute'])
                 });
             };
             $scope.pageChanged(1);
+
+            var originatorEv;
+
+            $scope.openMenu = function($mdOpenMenu, ev) {
+                originatorEv = ev;
+                $mdOpenMenu(ev);
+            };
 
             $scope.searchRequest = {};
             $scope.searchRequest.radius = 0;

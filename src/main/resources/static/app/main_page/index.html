@@ -1,75 +1,80 @@
-<md-content >
-<div  >
-
-    find POIs in radius
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>latitude</label>
-        <input type="text" ng-model="searchRequest.latitude">
-    </md-input-container>
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>longitude</label>
-        <input type="text" ng-model="searchRequest.longitude">
-    </md-input-container>
-
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>radius in metres</label>
-        <input type="text" ng-model="searchRequest.radius">
-    </md-input-container>
-
-    <md-button ng-click="searchPOIsInRadius(poi)" md-no-ink class="md-primary">search</md-button>
+<md-content>
+    <div>
 
 
-    <table class="table table-condensed table-stripped table-hover">
-        <thead>
-        <tr>
-            <th class="col-md-1">
-                №
-            </th>
-            <th>
-                ID
-            </th>
+        <button ng-click="showRadiusSearch = !showRadiusSearch" class="md-button md-raised">
+            find POIs in radius
+        </button>
 
-            <th>
-                Name
-            </th>
+        <div style="background-color: rgba(128, 128, 128, 0.24);" ng-show="showRadiusSearch">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>latitude</label>
+                <input type="text" ng-model="searchRequest.latitude">
+            </md-input-container>
 
-            <th>
-                description
-            </th>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>longitude</label>
+                <input type="text" ng-model="searchRequest.longitude">
+            </md-input-container>
 
-            <th>
-                city
-            </th>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>radius in metres</label>
+                <input type="text" ng-model="searchRequest.radius">
+            </md-input-container>
 
-            <th>
-                image
-            </th>
+            <md-button ng-click="searchPOIsInRadius(poi)" md-no-ink class="md-primary">search</md-button>
 
-            <th>
-                video
-            </th>
+        </div>
 
-            <th class="col-md-1">
-                latitude
-            </th>
+        <table class="table table-condensed table-stripped table-hover">
+            <thead>
+            <tr>
+                <th class="col-md-1">
+                    №
+                </th>
+                <th>
+                    ID
+                </th>
 
-            <th class="col-md-1">
-                longitude
-            </th>
-            <th></th>
-        </tr>
-        </thead>
+                <th>
+                    Name
+                </th>
 
-        <tbody>
+                <th>
+                    description
+                </th>
+
+                <th>
+                    city
+                </th>
+
+                <th>
+                    image
+                </th>
+
+                <th>
+                    video
+                </th>
+
+                <th class="col-md-1">
+                    latitude
+                </th>
+
+                <th class="col-md-1">
+                    longitude
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
             <tr data-ng-repeat="poi in allPOIs">
                 <td>{{$index + 1}}</td>
                 <td>
                     <a href="#/poi/{{poi.id}}">
                         {{poi.id}}
                     </a>
-                    </td>
+                </td>
                 <td>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label></label>
@@ -119,19 +124,46 @@
                     </md-input-container>
                 </td>
                 <td>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label></label>
-                        <md-button ng-click="updatePoi(poi)" md-no-ink class="md-primary">save</md-button>
-                        <md-button ng-click="deletePoi(poi, $index)" md-no-ink class="md-warn">delete</md-button>
-                    </md-input-container>
+
+                    <md-menu>
+                        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                            <!--<md-icon md-menu-origin md-svg-icon="call:business"></md-icon>-->
+                            <img src="assets/ic_settings_black_24dp_1x.png" width="20" height="20">
+                        </md-button>
+                        <md-menu-content width="6">
+                            <md-menu-item>
+                                <md-button ng-click="updatePoi(poi)">
+                                    <img src="assets/ic_settings_black_24dp_1x.png" width="20" height="20">
+                                    <!--<md-icon md-menu-align-target md-svg-icon="call:no-sim"></md-icon>-->
+                                    save
+                                </md-button>
+
+                            </md-menu-item>
+                            <md-menu-item>
+
+
+                                <md-button ng-click="deletePoi(poi, $index)">
+                                    <img src="assets/ic_settings_black_24dp_1x.png" width="20" height="20">
+                                    <!--<md-icon md-menu-align-target md-svg-icon="call:no-sim"></md-icon>-->
+                                    delete
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+
+                    <!--<md-input-container class="md-block" flex-gt-sm>-->
+                    <!--<label></label>-->
+                    <!--<md-button ng-click="updatePoi(poi)" md-no-ink class="md-primary">save</md-button>-->
+                    <!--<md-button ng-click="deletePoi(poi, $index)" md-no-ink class="md-warn">delete</md-button>-->
+                    <!--</md-input-container>-->
                 </td>
             </tr>
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
 
-    <md-button ng-click="addPoi()" class="md-primary md-flat md-raised">Add</md-button>
+        <md-button ng-click="addPoi()" class="md-primary md-flat md-raised">Add</md-button>
 
     </div>
 </md-content>

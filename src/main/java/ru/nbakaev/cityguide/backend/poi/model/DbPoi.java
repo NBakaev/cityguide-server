@@ -22,6 +22,9 @@ public class DbPoi extends BaseEntity {
 
     private String cityId;
 
+    protected String descriptionHtml;
+
+
     @GeoSpatialIndexed(name="index", type = GeoSpatialIndexType.GEO_2DSPHERE)
     private double[] point;
 //    private Point point;
@@ -30,7 +33,7 @@ public class DbPoi extends BaseEntity {
     }
 
 
-    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate) {
+    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate, String descriptionHtml) {
         this.name = name;
         this.description = description;
         this.id = id;
@@ -40,6 +43,16 @@ public class DbPoi extends BaseEntity {
         this.imageUrls = imageUrls;
         this.cityId = cityId;
         this.lastUpdate = lastUpdate;
+        this.descriptionHtml = descriptionHtml = descriptionHtml;
+    }
+
+
+    public String getDescriptionHtml() {
+        return descriptionHtml;
+    }
+
+    public void setDescriptionHtml(String descriptionHtml) {
+        this.descriptionHtml = descriptionHtml;
     }
 
     public String getCityId() {

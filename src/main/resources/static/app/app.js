@@ -7,14 +7,14 @@ angular.module('myApp', [
     'myApp.city',
     'myApp.services',
     'myApp.api',
-    'myApp.good',
-    'myApp.purchases',
     'myApp.account',
     'ngMaterial',
     'angularUtils.directives.dirPagination',
     'LocalStorageModule',
     'angular-loading-bar',
-    'angularFileUpload'
+    'angularFileUpload',
+    'monospaced.qrcode',
+    'textAngular'
 
 ]).config(['$routeProvider', 'paginationTemplateProvider', '$httpProvider', '$sceDelegateProvider',
     function ($routeProvider, paginationTemplateProvider, $httpProvider, $sceDelegateProvider) {

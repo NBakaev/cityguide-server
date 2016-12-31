@@ -11,6 +11,16 @@
             <!--</span>-->
             <!--</span>-->
 
+
+            <br><br>
+            <div text-angular ng-model="poi.descriptionHtml"></div>
+
+            <md-button ng-click="updatePoi(poi)">
+                <img src="assets/ic_settings_black_24dp_1x.png" width="20" height="20">
+                <!--<md-icon md-menu-align-target md-svg-icon="call:no-sim"></md-icon>-->
+                save
+            </md-button>
+
         </div>
 
         <div class="col-md-4" ng-if="poi.id">
@@ -26,9 +36,14 @@
 
             <br><br>
 
-            <div ng-if="poi.videoUrl != ''">
+            <div ng-if="poi.videoUrl != null && poi.videoUrl != ''">
                 <iframe width="420" height="315" ng-src="{{getVideoUrl()}}" frameborder="0" allowfullscreen></iframe>
             </div>
+
+            <br>
+
+            <qrcode data="{{data.pageUrl}}" href="{{data.pageUrl}}" size="274"></qrcode>
+
         </div>
     </div>
 </div>
