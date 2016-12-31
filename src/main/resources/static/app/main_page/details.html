@@ -1,26 +1,32 @@
-<div class="pull-left">
+<style>
+    .ta-scroll-window{
+        border: 0px;
+    }
+</style>
+
+<div style="position: fixed;  bottom: 4px;  right: 13px; z-index: 999999999999999;">
+    <md-button class="md-fab md-primary" aria-label="" ng-click="updatePoi(poi)">
+        <md-icon md-svg-src="assets/ic_save_white_36px.svg"></md-icon>
+    </md-button>
+
+    <md-button class="md-fab md-primary" aria-label="" ng-click="editMode = !editMode">
+        <md-icon md-svg-src="assets/ic_mode_edit_white_36px.svg"></md-icon>
+    </md-button>
+</div>
 
     <div class="row">
         <div class="col-md-8">
             <h2>{{poi.name}}</h2> <br>
-            {{poi.description}}
 
-            <!--<span ng-if="good.avatarUrl && good.avatarUrl.length > 0">-->
-            <!--<span ng-repeat="img in good.avatarUrl">-->
-            <!--<img src="{{img}}" class="img-responsive">-->
-            <!--</span>-->
-            <!--</span>-->
-
+            <div ng-if="!editMode">
+                <div ng-model="poi.description" text-angular ta-disabled="true" ta-toolbar="false"></div>
+            </div>
 
             <br><br>
-            <div text-angular ng-model="poi.descriptionHtml"></div>
 
-            <md-button ng-click="updatePoi(poi)">
-                <img src="assets/ic_settings_black_24dp_1x.png" width="20" height="20">
-                <!--<md-icon md-menu-align-target md-svg-icon="call:no-sim"></md-icon>-->
-                save
-            </md-button>
-
+            <div ng-if="editMode">
+                <div text-angular ng-model="poi.description" style=""></div>
+            </div>
         </div>
 
         <div class="col-md-4" ng-if="poi.id">
@@ -41,9 +47,6 @@
             </div>
 
             <br>
-
             <qrcode data="{{data.pageUrl}}" href="{{data.pageUrl}}" size="274"></qrcode>
-
         </div>
     </div>
-</div>

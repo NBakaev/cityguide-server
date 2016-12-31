@@ -17,11 +17,12 @@ angular.module('myApp.view1', ['ngRoute'])
         function ($scope, $rootScope, apiService, $mdDialog, $mdMedia, authService, $route, $sce) {
 
             $scope.poi = {};
+            $scope.editMode = false;
 
             $scope.data = {};
             $scope.data.pageUrl = window.location.href;
 
-            $scope.trustSrc = function(src) {
+            $scope.trustSrc = function (src) {
                 return $sce.trustAsResourceUrl(src);
             };
 
@@ -32,17 +33,17 @@ angular.module('myApp.view1', ['ngRoute'])
 
             apiService.getPoiById($route.current.params.id).then(function (data) {
                 $scope.poi = data;
-            })
+            });
 
             $scope.getMapUrl = function () {
-                if (!$scope.poi.id){
+                if (!$scope.poi.id) {
                     return "";
                 }
-                return $scope.trustSrc('https://maps.google.com/maps/api/staticmap?center='+$scope.poi.location.latitude+','+$scope.poi.location.longitude+'&zoom=15&size=400x200&sensor=false&markers='+$scope.poi.location.latitude+','+$scope.poi.location.longitude+'&key=AIzaSyBiL8IeEDG_k2dOp3tLCIwgR1_uY-p4osA');
+                return $scope.trustSrc('https://maps.google.com/maps/api/staticmap?center=' + $scope.poi.location.latitude + ',' + $scope.poi.location.longitude + '&zoom=15&size=400x200&sensor=false&markers=' + $scope.poi.location.latitude + ',' + $scope.poi.location.longitude + '&key=AIzaSyBiL8IeEDG_k2dOp3tLCIwgR1_uY-p4osA');
             }
 
-            $scope.getVideoUrl =function() {
-                if (!$scope.poi.id  || !$scope.poi.videoUrl){
+            $scope.getVideoUrl = function () {
+                if (!$scope.poi.id || !$scope.poi.videoUrl) {
                     return "";
                 }
                 return $scope.poi.videoUrl.replace("/watch?v=", "/embed/");
@@ -53,6 +54,27 @@ angular.module('myApp.view1', ['ngRoute'])
         function ($scope, $rootScope, apiService, $mdDialog, $mdMedia, authService, cartService, logger) {
 
             $scope.allPOIs = [];
+            $scope.allCities = [];
+
+            apiService.getAllCities().then(function (data) {
+                data.forEach(function (data) {
+                    $scope.allCities[data.id] = data;
+                });
+
+                $scope.allPOIs = data;
+            });
+
+            $scope.resolveCityById = function (id) {
+                if (isUndefinedOrNull(id)){
+                    return null;
+                }
+
+                if ($scope.allCities.size == 0 || isUndefinedOrNull($scope.allCities[id])) {
+                    return null;
+                }
+
+                return $scope.allCities[id];
+            };
 
             $scope.pageChanged = function (newPage) {
                 apiService.getAllPOIs().then(function (data) {
@@ -63,7 +85,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
             var originatorEv;
 
-            $scope.openMenu = function($mdOpenMenu, ev) {
+            $scope.openMenu = function ($mdOpenMenu, ev) {
                 originatorEv = ev;
                 $mdOpenMenu(ev);
             };

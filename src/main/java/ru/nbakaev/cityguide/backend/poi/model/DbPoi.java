@@ -2,7 +2,6 @@ package ru.nbakaev.cityguide.backend.poi.model;
 
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 import ru.nbakaev.cityguide.backend.entity.BaseEntity;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
 /**
  * Created by Nikita on 10/14/2016.
  */
-@Document
 public class DbPoi extends BaseEntity {
 
     private String imageUrl;
@@ -22,9 +20,6 @@ public class DbPoi extends BaseEntity {
 
     private String cityId;
 
-    protected String descriptionHtml;
-
-
     @GeoSpatialIndexed(name="index", type = GeoSpatialIndexType.GEO_2DSPHERE)
     private double[] point;
 //    private Point point;
@@ -33,7 +28,7 @@ public class DbPoi extends BaseEntity {
     }
 
 
-    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate, String descriptionHtml) {
+    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate) {
         this.name = name;
         this.description = description;
         this.id = id;
@@ -43,16 +38,6 @@ public class DbPoi extends BaseEntity {
         this.imageUrls = imageUrls;
         this.cityId = cityId;
         this.lastUpdate = lastUpdate;
-        this.descriptionHtml = descriptionHtml = descriptionHtml;
-    }
-
-
-    public String getDescriptionHtml() {
-        return descriptionHtml;
-    }
-
-    public void setDescriptionHtml(String descriptionHtml) {
-        this.descriptionHtml = descriptionHtml;
     }
 
     public String getCityId() {

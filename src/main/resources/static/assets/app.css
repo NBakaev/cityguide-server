@@ -1,5 +1,9 @@
 /* app css stylesheet */
 
+.mini-col-md {
+  width: 1.33333% !important;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;

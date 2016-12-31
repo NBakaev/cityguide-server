@@ -34,7 +34,7 @@ public class PoiRepository {
 
     private PoiDto transform(DbPoi dbPoi) {
         return new PoiDto(dbPoi.getName(), dbPoi.getDescription(), new PoiDto.PoiLocation(dbPoi.getPoint()[0], dbPoi.getPoint()[1]), dbPoi.getId(), dbPoi.getImageUrl(),
-                dbPoi.getImageUrls(), dbPoi.getVideoUrl(), dbPoi.getCityId(), dbPoi.getLastUpdate(), dbPoi.getDescriptionHtml());
+                dbPoi.getImageUrls(), dbPoi.getVideoUrl(), dbPoi.getCityId(), dbPoi.getLastUpdate());
     }
 
     private List<PoiDto> transform(List<DbPoi> dbPois) {
@@ -43,7 +43,7 @@ public class PoiRepository {
 
     private DbPoi transformDB(PoiDto poiDto) {
         return new DbPoi(poiDto.getName(), poiDto.getDescription(), poiDto.getId(), new double[]{poiDto.getLocation().getLatitude(), poiDto.getLocation().getLongitude()}, poiDto.getImageUrl(),
-                poiDto.getImageUrls(), poiDto.getVideoUrl(), poiDto.getCityId(), poiDto.getLastUpdate(), poiDto.getDescriptionHtml());
+                poiDto.getImageUrls(), poiDto.getVideoUrl(), poiDto.getCityId(), poiDto.getLastUpdate());
     }
 
     private List<DbPoi> transformDB(List<PoiDto> dbPoiDtos) {
@@ -69,15 +69,6 @@ public class PoiRepository {
 
         return transform(mongoTemplate.find(query, DbPoi.class));
     }
-
-//    public GeoResults<DbPoi> getGeoPoiInRadius(PoiDto.PoiLocation location, double radius){
-//        NearQuery nearQuery = NearQuery.near(location.getLatitude(), location.getLongitude());
-//        nearQuery.maxDistance(new Distance(radius, Metrics.KILOMETERS));
-//
-//        GeoResults<DbPoi> geoResults = transform(mongoTemplate.geoNear(nearQuery, DbPoi.class));
-//
-//        return geoResults;
-//    }
 
     public List<PoiDto> getPoiInRadius(PoiDto.PoiLocation location, double radius) {
         NearQuery nearQuery = NearQuery.near(location.getLatitude(), location.getLongitude());
