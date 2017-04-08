@@ -34,7 +34,7 @@ public class PoiRepository {
 
     private PoiDto transform(DbPoi dbPoi) {
         return new PoiDto(dbPoi.getName(), dbPoi.getDescription(), new PoiDto.PoiLocation(dbPoi.getPoint()[0], dbPoi.getPoint()[1]), dbPoi.getId(), dbPoi.getImageUrl(),
-                dbPoi.getImageUrls(), dbPoi.getVideoUrl(), dbPoi.getCityId(), dbPoi.getLastUpdate());
+                dbPoi.getImageUrls(), dbPoi.getVideoUrl(), dbPoi.getCityId(), dbPoi.getLastUpdate(), dbPoi.getRating());
     }
 
     private List<PoiDto> transform(List<DbPoi> dbPois) {
@@ -43,7 +43,7 @@ public class PoiRepository {
 
     private DbPoi transformDB(PoiDto poiDto) {
         return new DbPoi(poiDto.getName(), poiDto.getDescription(), poiDto.getId(), new double[]{poiDto.getLocation().getLatitude(), poiDto.getLocation().getLongitude()}, poiDto.getImageUrl(),
-                poiDto.getImageUrls(), poiDto.getVideoUrl(), poiDto.getCityId(), poiDto.getLastUpdate());
+                poiDto.getImageUrls(), poiDto.getVideoUrl(), poiDto.getCityId(), poiDto.getLastUpdate(), poiDto.getRating());
     }
 
     private List<DbPoi> transformDB(List<PoiDto> dbPoiDtos) {
@@ -95,11 +95,11 @@ public class PoiRepository {
         return updatePoi(poiDto, true);
     }
 
-    public PoiDto updatePoi(PoiDto poiDto, boolean recound) {
+    public PoiDto updatePoi(PoiDto poiDto, boolean recount) {
         poiDto.setLastUpdate(new Date());
         mongoTemplate.save(transformDB(poiDto));
 
-        if (recound){
+        if (recount){
             cityRepository.recoundAndSaveAllCitiesPoisNumbers();
         }
         return poiDto;

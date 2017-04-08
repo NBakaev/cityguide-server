@@ -19,6 +19,7 @@ public class DbPoi extends BaseEntity {
     private String videoUrl;
 
     private String cityId;
+    private double rating;
 
     @GeoSpatialIndexed(name="index", type = GeoSpatialIndexType.GEO_2DSPHERE)
     private double[] point;
@@ -27,9 +28,9 @@ public class DbPoi extends BaseEntity {
     public DbPoi() {
     }
 
-
-    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate) {
+    public DbPoi(String name, String description, String id, double[] point, String imageUrl, List<String> imageUrls,String videoUrl, String cityId, Date lastUpdate, double rating) {
         this.name = name;
+        this.rating = rating;
         this.description = description;
         this.id = id;
         this.point = point;
@@ -38,6 +39,14 @@ public class DbPoi extends BaseEntity {
         this.imageUrls = imageUrls;
         this.cityId = cityId;
         this.lastUpdate = lastUpdate;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public String getCityId() {

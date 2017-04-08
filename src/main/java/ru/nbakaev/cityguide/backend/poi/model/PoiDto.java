@@ -24,12 +24,15 @@ public class PoiDto {
     @ApiModelProperty("Id of city. Can be null")
     private String cityId;
     private Date lastUpdate;
+    private double rating;
+
 
     public PoiDto() {
     }
 
-    public PoiDto(String name, String description, PoiLocation location, String id, String imageUrl, List<String> imageUrls, String videoUrl, String cityId, Date lastUpdate) {
+    public PoiDto(String name, String description, PoiLocation location, String id, String imageUrl, List<String> imageUrls, String videoUrl, String cityId, Date lastUpdate, double rating) {
         this.name = name;
+        this.rating = rating;
         this.description = description;
         this.location = location;
         this.id = id;
@@ -38,6 +41,14 @@ public class PoiDto {
         this.imageUrls = imageUrls;
         this.cityId = cityId;
         this.lastUpdate = lastUpdate;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public Date getLastUpdate() {
